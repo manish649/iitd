@@ -1,0 +1,8 @@
+1. For  Payment through sbicollect or other gateway print the receipt and send the mail.
+2. Direct Payment-> Form for collecting user data [payment] 
+      i. Send intimation mail for getting the information
+	ii. if transaction Match then print the receipt.and send mail to the student
+3. Page to display the report [program wise collection]
+4. Create Fee Receipt and add QRcode for authenticity. 
+	add invoiceno to the receipt.
+	show previous installments on the receipt.
