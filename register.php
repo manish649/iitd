@@ -3,15 +3,13 @@ session_start();
 require_once './config/config.php';
 //If User has already logged in, redirect to dashboard page.
 if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === TRUE) {
-    header('Location:index.php');
+    header('Location:register.php');
 }
 $empid="";
 $db1 = getDbInstance();
 if (isset($_POST['empid'])) {
    $empid = $_POST['empid'];
 }
-
-
 
 $db1->where('user_name',$empid);
 $cors = $db1->getValue('admin_accounts','user_name',1);
@@ -43,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	//$db1 = getDbInstance();
     $last_id = $db1->insert ('registration', $data_to_store);
 	//echo $db1->getlastquery();
-	header('Location:login.php');
+	header('Location:index.php');
 	
 	}  //if 
 	
