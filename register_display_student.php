@@ -43,7 +43,7 @@ include_once 'includes/header.php';
     </div>
         <?php include('./includes/flash_messages.php') ?>
 
-<!-- end filter -->
+
 
     <hr>
 
