@@ -155,7 +155,8 @@ function search(){
 			$co5='';
 			$co6='';
  }
- else{
+ else{    
+	$corsdq = "SELECT prog, sem, course_code,course_name,co1,co2,co3,co4,co5,co6 FROM course WHERE user='$sessionId' and course_code='$select2'";
 	        $corsdr=  $db1->query($corsdq);
 	 foreach ($corsdr as $row2) {
 		// echo "querry =".$corsdq;

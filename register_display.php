@@ -211,8 +211,7 @@ include_once 'includes/header.php';
 
 				 ?>
                 <tr>
-	                <td><?php echo $i ?></td>
-					
+	                <td><?php echo $i ?></td>	
 	                <td><?php echo htmlspecialchars($row['roll_no']) ?></td>
 	                <td><?php echo htmlspecialchars($row['name']) ?></td>
 					<td><?php echo htmlspecialchars($row['course_code']) ?></td>
