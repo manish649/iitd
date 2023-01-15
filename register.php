@@ -3,7 +3,8 @@ session_start();
 require_once './config/config.php';
 //If User has already logged in, redirect to dashboard page.
 if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === TRUE) {
-    header('Location:register.php');
+//    header('Location:index.php');
+
 }
 $empid="";
 $db1 = getDbInstance();
@@ -28,24 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 	$data_to_store = filter_input_array(INPUT_POST);
 	$name = $data_to_store['name'];
-	$empid = $data_to_store['empid'];
-	$designation = $data_to_store['designation'];
-	$dept = $data_to_store['dept'];
-	$school = $data_to_store['school'];
+	$program = $data_to_store['program'];
 	$email = $data_to_store['email'];
-	$cabin = $data_to_store['cabin'];
-	$intercom = $data_to_store['intercom'];
-	$website = $data_to_store['website'];
+	$mobile = $data_to_store['mobile'];
+	$transacton_date = $data_to_store['transacton_date'];
+	$transaction_id = $data_to_store['transaction_id'];
+	$amount = $data_to_store['amount'];
+	$receipt = $data_to_store['receipt'];
 	
 	if(empty($errors)==true){ 
 	//$db1 = getDbInstance();
     $last_id = $db1->insert ('registration', $data_to_store);
-	//echo $db1->getlastquery();
-	header('Location:index.php');
+	echo $db1->getlastquery();
+	echo("Registered");
+	header('Location:register_display_student.php');
 	
 	}  //if 
-	
-	
 	}  // if
 	}  //else	
 
@@ -53,16 +52,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <title>Administrator</title>
+        <title>Registration Details</title>
 
         <!-- Bootstrap Core CSS -->
         <link  rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -109,7 +105,7 @@ body {
 <div id="page-" class="col-md-4 col-md-offset-4 ">
 	<form class="form loginform " method="POST" action="">
 		<div class="login-panel panel transparent panel-default">
-			<div class="panel-heading">Please Register</div>
+			<div class="panel-heading"> Upload Registration Details</div>
 			<div class="panel-body">
 				<div class="form-group">
 					<label class="control-label">Name</label>
@@ -117,19 +113,19 @@ body {
 				</div>
 				<div class="form-group">
 					<label class="control-label">Program</label> 
-					<input type="text"  name="empid" class="form-control" required="required">
+					<input type="text"  name="program" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">Email</label> 
-					<input type="email"  name="designation" class="form-control" required="required">
+					<input type="email"  name="email" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">Mobile Number</label> 
-					<input type="number"  name="dept" class="form-control" required="required">
+					<input type="number"  name="mobile" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">Date of Transaction</label>
-					<input type="date" name="date_transaction" class="form-control" required="required">
+					<input type="date" name="transacton_date" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">Transaction Id</label> 
@@ -137,11 +133,11 @@ body {
 				</div>
 				<div class="form-group">
 					<label class="control-label">Amount</label> 
-					<input type="text"  name="cabin" class="form-control" required="required">
+					<input type="text"  name="amount" class="form-control" required="required">
 				</div>
 				<div class="form-group">
 					<label class="control-label">Upload Receipt</label> 
-					<input type="file"  name="intercom" class="form-control" required="required">
+					<input type="file"  name="receipt" class="form-control" required="required">
 				</div>
 			<?php
 				if(isset($_SESSION['login_failure'])){ ?>
