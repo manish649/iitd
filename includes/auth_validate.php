@@ -4,6 +4,7 @@
 
 //if user is Not Logged in, redirect to login.php page.
 if (!isset($_SESSION['user_logged_in'])) {
+    echo("Login Failed");
 	header('Location:login.php');
 }
 /*

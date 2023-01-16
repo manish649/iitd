@@ -70,26 +70,119 @@ if(isset($_COOKIE['username']) && isset($_COOKIE['password']))
         <![endif]-->
         <script src="js/jquery.min.js" type="text/javascript"></script> 
 <style>
-body {
-	
-  background-image: url("images/sharda2.jpg");
-   /* Full height */
-  height: 100%; 
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
- 
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to right, #b92b27, #1565c0)
 }
-.transparent {
-  background:#7f7f7f;
-  background:rgba(255,255,205,0.5);
+
+.card{
+    margin-bottom:20px;
+    border:none;
 }
+
+.box {
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #191919;
+    ;
+    text-align: center;
+    transition: 0.25s;
+    margin-top: 100px
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+    background: #2ecc71
+}
+
+.forgot {
+    text-decoration: underline
+}
+
+
 </style>
     </head>
 
-    <body  >
+    <body>
+
+
+    <!--new login start-->
+    <div class="container"> 
+    <div class="row"> 
+        <div class="col-md-6"> 
+            <div class="card">
+         <form method="POST" action="authenticate.php"  class="form loginform box">
+          <h1>Login</h1>
+           <p class="text-muted"> Please enter your login and password!</p> 
+          <input type="text" name="username" placeholder="Username" class="form-control" required="required">
+          <input type="password" name="passwd" placeholder="Password" class="form-control" required="required">
+          <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+         
+         <!-- <button type="submit" class="btn btn-success loginField" >Login</button> -->
+         <input type="submit" name="" class="btn btn-success loginField" value="Login"> 
+                 <?php
+				if(isset($_SESSION['login_failure'])){ ?>
+				<div class="alert alert-danger alert-dismissable fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					<?php echo $_SESSION['login_failure']; unset($_SESSION['login_failure']);?>
+				</div>
+				<?php } ?>
+                 </form>
+
+            </div> 
+        </div> 
+    </div>
+</div>
+    <!--new login stop--
 
 <div id="page-" class="col-md-4 col-md-offset-4 ">
 	<form class="form loginform " method="POST" action="authenticate.php">
@@ -108,17 +201,9 @@ body {
 					<label>
 						<input name="remember" type="checkbox" value="1">Remember Me
 					</label>
-				</div>
-				<?php
-				if(isset($_SESSION['login_failure'])){ ?>
-				<div class="alert alert-danger alert-dismissable fade in">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					<?php echo $_SESSION['login_failure']; unset($_SESSION['login_failure']);?>
-				</div>
-				<?php } ?>
-				<button type="submit" class="btn btn-success loginField" >Login</button>
-			</div>
-		</div>
-	</form>
-</div>
+				</div-->
+			
+				<!--button type="submit" class="btn btn-success loginField" >Login</button-->
+                
+		
 <?php include_once 'includes/footer.php'; ?>
